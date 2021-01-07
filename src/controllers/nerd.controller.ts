@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 
 class NerdOb {
   name: string;
@@ -8,6 +8,11 @@ class NerdOb {
     this.name = name;
     this.isNerd = (name === "Ayaan");
   }
+}
+
+interface PostMessage {
+  name: string;
+  message: string;
 }
 
 @Controller('nerd')
@@ -22,8 +27,14 @@ export class NerdController {
     return (query.name != null) ? new NerdOb(query.name) : new NerdOb("No name");
   }
 
-  @Get(":name")
-  getName(@Param() params) {
+  @Get("/me/:name")
+  getName(@Param() params): Object {
     return { name: params.name };
+  }
+
+  @Post("/message")
+  postMessage(@Body() data: PostMessage): PostMessage {
+    console.log(data);
+    return data;
   }
 }
