@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { AppController } from './controllers/app.controller';
 import { NerdController } from './controllers/nerd.controller';
-import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
@@ -9,4 +10,4 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   ],
   controllers: [AppController, NerdController],
 })
-export class AppModule { }
+export class AppModule { };
