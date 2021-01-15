@@ -3,7 +3,7 @@ import { Controller, Get } from '@nestjs/common';
 @Controller()
 export class AppController {
   @Get("/")
-  getHello(): string {
-    return "Welcome the the blog API";
+  getHello(): Object {
+    return { message: "Welcome the the blog API"};
   }
 }
